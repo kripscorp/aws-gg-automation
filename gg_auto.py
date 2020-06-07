@@ -8,7 +8,7 @@ import boto3
 #PROFILE_NAME='fmcna-critline-dev'
 #REGION='us-east-1'
 
-SESSION = boto3.Session(profile_name='fmcna-critline-dev', region_name='us-east-1')
+SESSION = boto3.Session(profile_name='<aws profile>', region_name='us-east-1')
 GG = SESSION.client('greengrass')
 IOT = SESSION.client('iot')
 
@@ -225,9 +225,9 @@ def main():
 
     print("Creating thing type")
     edge_device_type = "Edge-Device"
-    tmachine_device_type = "T-Machine"
-    create_thing_type(edge_device_type, "Critline Edge Device (CED)")
-    create_thing_type(tmachine_device_type, "Critline T-Machine (CDX)")
+    machine_device_type = "Machine"
+    create_thing_type(edge_device_type, "Edge Device")
+    create_thing_type(machine_device_type, "devices")
 
     clinic_id = "ClinicID"
     ced_name = "CED-test-boto"
