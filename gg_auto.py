@@ -5,7 +5,7 @@ import json
 import yaml
 import boto3
 
-#PROFILE_NAME='fmcna-critline-dev'
+#PROFILE_NAME='aws-profile'
 #REGION='us-east-1'
 
 SESSION = boto3.Session(profile_name='<aws profile>', region_name='us-east-1')
@@ -215,7 +215,6 @@ def gg_new_deployment(group_id, group_ver_id):
 def main():
     
     # test area - start
-    #parse_config("ClinicID/CED-test-boto/CED-test-boto.json", "config.json")
     #print(generate_truststore('2a00068c-7213-4012-9ac6-c2d6892d8216'))
     #print(generate_truststore('205991a0-efd1-4144-82b4-d2613f194897'))
     #print(generate_truststore('0829d503-d2d5-4a23-a077-a905076fd8e5'))
@@ -229,10 +228,10 @@ def main():
     create_thing_type(edge_device_type, "Edge Device")
     create_thing_type(machine_device_type, "devices")
 
-    clinic_id = "ClinicID"
-    ced_name = "CED-test-boto"
-    group_name = ced_name
-    os.mkdir(clinic_id)
+    dev_id = "deviceID"
+    dev_name = "edge-test-boto"
+    group_name = dev_name
+    os.mkdir(dev_id)
 
     ###
     #   Create Greengrass group, core, certificates, policy
@@ -283,10 +282,10 @@ def main():
                 'iot_endpoint': iot_endpoint
             }
 
-        core_dir = clinic_id + "/" + ced_name
+        core_dir = dev_id + "/" + dev_name
         os.mkdir(core_dir)
 
-        state_file = core_dir + "/" + ced_name + ".json"
+        state_file = core_dir + "/" + dev_name + ".json"
         with open(state_file, 'w') as f:
             json.dump(state, f, indent=4)
 
