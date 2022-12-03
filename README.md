@@ -1,1 +1,1 @@
-# aws-automation
+# aws greengrass automation
